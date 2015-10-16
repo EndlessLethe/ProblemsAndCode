@@ -23,7 +23,17 @@ void rearrange(char *output, char const *input, int n_columns, int const columns
 	//处理标号
 	for (col = 0; col < n_columns; col += 2)
 	{
-		int n_chars = columns[col + 1] - columns[col] + 1;
+		int n_chars = 0;
+		
+		//若列号数是奇数 
+		if (n_columns % 2 != 0 && col == n_columns - 1)
+		{
+			n_chars = len - columns[col];
+		}
+		
+		else {
+			n_chars = columns[col + 1] - columns[col] + 1;
+		}
 		
 		//如果输出已满
 		if(output_col == MAX_INPUT - output_col - 1);
@@ -36,7 +46,7 @@ void rearrange(char *output, char const *input, int n_columns, int const columns
 		{
 			continue; 
 		}
-			
+		
 		//如果空间不够完整的
 		if (output_col + n_chars > MAX_INPUT - 1)
 			n_chars = MAX_INPUT - output_col -1;
