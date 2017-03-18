@@ -1,0 +1,20 @@
+(define l '())
+(define (generate tree)
+  (cond ((pair? tree)
+      (begin
+        (generate (cdr tree))
+        (generate (car tree))))
+      ((not (null? tree)) (begin
+        (set! l (cons tree l))
+        ;(display tree)
+        ;(newline)
+        ;(display l)
+        ))
+      (else '())))
+(define (fringe)
+  (lambda (x)
+    (begin
+     (generate x)
+     l)))
+(define x (list (list 1 2) (list 3 4 4)))
+((fringe) x)

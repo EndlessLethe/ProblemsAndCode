@@ -1,0 +1,8 @@
+(define (squareList1 items)
+  (if (null? items)
+      '()
+      (cons (* (car items) (car items)) (squareList1 (cdr items)))))
+(squareList1 (list 1 2 3 34))
+(define (squareList2 items)
+  (map (lambda (x) (* x x)) items))
+(squareList2 (list 1 2 334))
